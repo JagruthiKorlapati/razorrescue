@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RazorRescue
 
 **Cross-rail failure recovery, conversational dunning, and churn-shielding for Razorpay recurring payments.**
@@ -173,3 +174,7 @@ Churn-shield cancellations:    9  (chargeback-risk avoided)
 ## Disclaimer
 
 This is a proof-of-concept built for demonstration/evaluation purposes using Razorpay's test-mode APIs and synthetic transaction data. It is not affiliated with or endorsed by Razorpay.
+=======
+# razorrescue
+RazorRescue recovers failed recurring payments on Razorpay by classifying failures as transient or hard, generating cross-rail UPI fallback links, sending conversational WhatsApp dunning messages, and using LLM-based intent extraction to automatically reschedule, retry, or cancel based on the customer's reply — reducing chargeback risk.
+>>>>>>> 8e1f0bb567390f08730266b61bb2ccb675e6260b
