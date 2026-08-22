@@ -1,0 +1,902 @@
+[
+  {
+    "payment_id": "pay_sim_0001",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0002",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0003",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Salary abhi tak nahi aaya, Friday ko pay kar dunga"
+  },
+  {
+    "payment_id": "pay_sim_0004",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0005",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "RETRY_NOW",
+    "customer_reply_text": "Try charging again now"
+  },
+  {
+    "payment_id": "pay_sim_0006",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0007",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0008",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0009",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0010",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "CHURN_INTENT",
+    "customer_reply_text": "Stop charging me, not interested"
+  },
+  {
+    "payment_id": "pay_sim_0011",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0012",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0013",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "RETRY_NOW",
+    "customer_reply_text": "Try charging again now"
+  },
+  {
+    "payment_id": "pay_sim_0014",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0015",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0016",
+    "error_code": "NETWORK_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0017",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0018",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0019",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0020",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0021",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0022",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0023",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0024",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0025",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0026",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0027",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "RETRY_NOW",
+    "customer_reply_text": "Try charging again now"
+  },
+  {
+    "payment_id": "pay_sim_0028",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0029",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0030",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0031",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0032",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0033",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0034",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0035",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Salary abhi tak nahi aaya, Friday ko pay kar dunga"
+  },
+  {
+    "payment_id": "pay_sim_0036",
+    "error_code": "NETWORK_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0037",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0038",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Sorry, will clear this by Monday"
+  },
+  {
+    "payment_id": "pay_sim_0039",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0040",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0041",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Salary abhi tak nahi aaya, Friday ko pay kar dunga"
+  },
+  {
+    "payment_id": "pay_sim_0042",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0043",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Sorry, will clear this by Monday"
+  },
+  {
+    "payment_id": "pay_sim_0044",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0045",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0046",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "CHURN_INTENT",
+    "customer_reply_text": "Stop charging me, not interested"
+  },
+  {
+    "payment_id": "pay_sim_0047",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Salary abhi tak nahi aaya, Friday ko pay kar dunga"
+  },
+  {
+    "payment_id": "pay_sim_0048",
+    "error_code": "NETWORK_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0049",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0050",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0051",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0052",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0053",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0054",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Sorry, will clear this by Monday"
+  },
+  {
+    "payment_id": "pay_sim_0055",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0056",
+    "error_code": "NETWORK_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0057",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0058",
+    "error_code": "NETWORK_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0059",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0060",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0061",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0062",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0063",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0064",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0065",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "CHURN_INTENT",
+    "customer_reply_text": "Please cancel this, I don't want it anymore"
+  },
+  {
+    "payment_id": "pay_sim_0066",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0067",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0068",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0069",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0070",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0071",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0072",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0073",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0074",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0075",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Sorry, will clear this by Monday"
+  },
+  {
+    "payment_id": "pay_sim_0076",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0077",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0078",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0079",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0080",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0081",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0082",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0083",
+    "error_code": "BAD_REQUEST_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "Sorry, will clear this by Monday"
+  },
+  {
+    "payment_id": "pay_sim_0084",
+    "error_code": "SERVER_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0085",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0086",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0087",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0088",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0089",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0090",
+    "error_code": "INSUFFICIENT_FUNDS",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0091",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "NO_REPLY",
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0092",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0093",
+    "error_code": "CARD_DECLINED",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0094",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 49900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0095",
+    "error_code": "BANK_SYSTEM_ERROR",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0096",
+    "error_code": "GATEWAY_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0097",
+    "error_code": "ISSUER_TIMEOUT",
+    "error_source": "issuer",
+    "amount": 149900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  },
+  {
+    "payment_id": "pay_sim_0098",
+    "error_code": "AUTHENTICATION_FAILED",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "RETRY_NOW",
+    "customer_reply_text": "Please retry now, I have funds"
+  },
+  {
+    "payment_id": "pay_sim_0099",
+    "error_code": "MANDATE_NOT_ACTIVE",
+    "error_source": "issuer",
+    "amount": 29900,
+    "classification_expected": "HARD_FAILURE",
+    "customer_reply_intent": "PROMISE_TO_PAY",
+    "customer_reply_text": "I'll pay next week once my account has funds"
+  },
+  {
+    "payment_id": "pay_sim_0100",
+    "error_code": "NETWORK_ERROR",
+    "error_source": "issuer",
+    "amount": 99900,
+    "classification_expected": "TRANSIENT",
+    "customer_reply_intent": null,
+    "customer_reply_text": null
+  }
+]

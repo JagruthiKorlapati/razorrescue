@@ -1,0 +1,17 @@
+{
+  "baseline": {
+    "recovered_count": 44,
+    "total": 100,
+    "recovery_rate": 44.0,
+    "median_time_days": 2.0
+  },
+  "razorrescue": {
+    "recovered_count": 54,
+    "total": 100,
+    "recovery_rate": 54.0,
+    "median_time_days": 0.22
+  },
+  "cross_rail_recoveries": 24,
+  "chargebacks_avoided": 3,
+  "lift_percentage_points": 10.0
+}
