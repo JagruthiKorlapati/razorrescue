@@ -19,24 +19,20 @@ RazorRescue sits on top of Razorpay's payment.failed webhook to recover involunt
 ## Architecture
 
 ```mermaid
-%%{init: {'flowchart': {'curve': 'linear'}}}%%
-flowchart TD
-    A[Payment Failed Webhook] --> B[Webhook Gateway]
-    B --> C[Error Classifier]
-    C --> D[Transient Error]
-    C --> E[Hard Failure]
-    D --> F[Retry Scheduler]
-    E --> G[UPI Fallback Link]
-    G --> H[WhatsApp Message Sent]
-    H --> I[Customer Reply]
-    I --> J[Intent Extraction]
-    J --> K[Reschedule]
-    J --> L[Cancel]
-    J --> M[Retry Now]
-    F --> N[Recovery Ledger]
-    K --> N
-    L --> N
-    M --> N
+flowchart LR
+    A[Payment Failed] --> B[Webhook Gateway]
+    B --> C{Error Classifier}
+    C -->|Transient| D[Retry Scheduler]
+    C -->|Hard Failure| E[UPI Fallback + WhatsApp]
+    E --> F[Customer Reply]
+    F --> G{Intent Extraction}
+    G -->|Promise to Pay| H[Reschedule]
+    G -->|Churn Intent| I[Cancel]
+    G -->|Retry Now| J[Immediate Retry]
+    D --> K[(Recovery Ledger)]
+    H --> K
+    I --> K
+    J --> K
 ```
 
 ## Repository Structure
