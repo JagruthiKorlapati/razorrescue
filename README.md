@@ -36,7 +36,9 @@ flowchart TD
     K --> N
     L --> N
     M --> N
-```## Repository Structure
+```
+
+## Repository Structure
 
 ```
 razorrescue/
