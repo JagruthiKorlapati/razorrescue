@@ -13,23 +13,47 @@ RazorRescue sits on top of Razorpay's payment.failed webhook to recover involunt
 ## The Solution
 
 1. Cross-Rail Dynamic Fallback Switcher - On transient bank/gateway errors, instantly generates a fallback 1-tap UPI Intent across an alternate VPA/app instead of retrying the same failing rail.
-2. Conversational Dunning with Promise-to-Pay - A WhatsApp-style agent parses replies like "I'll pay Friday", extracts the date, pauses retries, and auto-schedules a payment prompt for that exact day.
+2. Conversational Dunning with Promise-to-Pay - A WhatsApp-style agent parses replies like "I will pay Friday", extracts the date, pauses retries, and auto-schedules a payment prompt for that exact day.
 3. Sentiment-Aware Churn Shield - Detects explicit cancellation or dissatisfaction intent and immediately halts retries plus calls the merchant cancellation API.
 
 ## Architecture
 
-payment.failed -> FastAPI Webhook Gateway (HMAC verify + Redis idempotency)
-      -> Error Classifier (TRANSIENT vs HARD_FAILURE)
-            -> Transient -> Celery Retry Scheduler (adaptive backoff)
-            -> Hard Failure -> Cross-Rail UPI Fallback + WhatsApp Dunning
-      -> Inbound reply -> Intent Extraction (Claude API / mocked keyword classifier)
-            -> PROMISE_TO_PAY -> reschedule retry job
-            -> CHURN_INTENT -> halt retries + cancel
-            -> RETRY_NOW -> trigger immediate retry
-      -> PostgreSQL Ledger (payment_failures, rail_switch_events, conversation_messages, recovery_ledger)
+```mermaid
+flowchart TD
+    A[Razorpay Event: payment.failed] --> B[FastAPI Webhook Gateway<br/>HMAC-SHA256 verification<br/>Redis idempotency SETNX]
+
+    B --> C[Error Classifier<br/>error_code / error_source /<br/>bank_code / issuer_uptime]
+
+    C -->|Transient bank/gateway downtime| D[Predictive Retry Scheduler<br/>Celery task, adaptive backoff]
+    C -->|Hard failure: balance/mandate| E[Dynamic Rail Switch<br/>Generates fallback UPI Intent]
+
+    D --> F[1-Tap Retry on Original Rail]
+
+    E --> G[WhatsApp Dunning Bus<br/>Localized/Hinglish message]
+    G --> H[Inbound WhatsApp Reply]
+
+    H --> I[LLM Intent and Entity Extraction<br/>Claude API structured JSON output]
+
+    I -->|PROMISE_TO_PAY| J[Reschedule job<br/>via Celery/Redis]
+    I -->|CHURN_INTENT| K[Cancel Mandate<br/>Call merchant Cancel API]
+    I -->|RETRY_NOW| L[Trigger 1-Tap<br/>Razorpay Payment]
+
+    F --> M[(Settlement and Audit Ledger<br/>PostgreSQL)]
+    J --> M
+    K --> M
+    L --> M
+
+    M --> N[Recovery Rate / Cost-per-Recovery /<br/>Churn Shield Metrics Dashboard]
+
+    style B fill:#4A90D9,color:#fff
+    style C fill:#F5A623,color:#fff
+    style M fill:#7B68EE,color:#fff
+    style I fill:#50C878,color:#fff
+```
 
 ## Repository Structure
 
+```
 razorrescue/
     README.md
     app/
@@ -53,29 +77,32 @@ razorrescue/
     docker-compose.yml          - Redis and Postgres
     requirements.txt
     .env                        - Config, not committed
+```
 
 ## Getting Started
 
-Step 1: Install dependencies
+```bash
+# 1. Install dependencies
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 
-Step 2: Start Redis and Postgres
+# 2. Start Redis and Postgres
 docker-compose up -d
 
-Step 3: Create the database tables
+# 3. Create the database tables
 python -c "from app.db import init_db; init_db(); print('Tables created')"
 
-Step 4: Run the API (Terminal 1)
+# 4. Run the API (Terminal 1)
 uvicorn app.main:app --reload
 
-Step 5: Run the Celery worker (Terminal 2)
+# 5. Run the Celery worker (Terminal 2)
 celery -A app.celery_app worker --loglevel=info --pool=solo
 
-Step 6: Test it (Terminal 3)
+# 6. Test it (Terminal 3)
 python send_test_webhook.py
 python send_test_reply.py
+```
 
 ## Evaluation (eval.py)
 
@@ -84,12 +111,14 @@ eval.py replays 100 seeded mock payment.failed transactions through two strategi
 - Baseline: naive same-rail retry on a fixed schedule
 - RazorRescue: classify, then cross-rail fallback or conversational dunning, then intent-based reschedule, retry, or cancel
 
-Run it:
+```bash
 python data/generate_mock_data.py
 python eval.py
+```
 
-Actual output (reproducible - data generation and eval are both seeded):
+**Actual output** (reproducible - data generation and eval are both seeded):
 
+```
 RazorRescue Evaluation, 100 transactions simulated
 
 Baseline (naive retry):
@@ -103,8 +132,9 @@ Hard-failure recoveries (cross-rail/dunning): 24
 Chargeback-risk cancellations avoided: 3
 
 Net Lift: +10.0 percentage points recovered vs. baseline
+```
 
-Note: Recovery probabilities used in the simulation are informed estimates based on the problem's baseline stats, not measured production data. The simulation validates the architecture and decision logic, not real-world conversion rates.
+*Note: Recovery probabilities used in the simulation are informed estimates based on the problem's baseline stats, not measured production data. The simulation validates the architecture and decision logic, not real-world conversion rates.*
 
 ## Tech Stack
 
@@ -116,7 +146,7 @@ Note: Recovery probabilities used in the simulation are informed estimates based
 
 ## Status / Roadmap
 
-Done:
+**Done:**
 - Webhook ingestion and idempotency
 - Deterministic failure classifier
 - Predictive retry scheduler (Celery, adaptive backoff)
@@ -127,7 +157,7 @@ Done:
 - PostgreSQL persistence for all events
 - Evaluation harness proving recovery-rate and time-to-recovery lift
 
-Not yet done:
+**Not yet done:**
 - Real Claude API integration for intent extraction
 - Real WhatsApp Business API integration
 - Real Razorpay sandbox integration (live UPI Intent and cancellation API)
