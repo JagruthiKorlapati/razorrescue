@@ -18,39 +18,31 @@ RazorRescue sits on top of Razorpay's payment.failed webhook to recover involunt
 
 ## Architecture
 
+
 ```mermaid
 flowchart TD
-    A[Razorpay Event: payment.failed] --> B[FastAPI Webhook Gateway<br/>HMAC-SHA256 verification<br/>Redis idempotency SETNX]
+    A[Razorpay Event: payment.failed] --> B[FastAPI Webhook Gateway]
+    B --> C[Error Classifier]
 
-    B --> C[Error Classifier<br/>error_code / error_source /<br/>bank_code / issuer_uptime]
+    C -->|Transient| D[Predictive Retry Scheduler]
+    C -->|Hard Failure| E[Dynamic Rail Switch]
 
-    C -->|Transient bank/gateway downtime| D[Predictive Retry Scheduler<br/>Celery task, adaptive backoff]
-    C -->|Hard failure: balance/mandate| E[Dynamic Rail Switch<br/>Generates fallback UPI Intent]
-
-    D --> F[1-Tap Retry on Original Rail]
-
-    E --> G[WhatsApp Dunning Bus<br/>Localized/Hinglish message]
+    D --> F[Retry on Original Rail]
+    E --> G[WhatsApp Dunning Message]
     G --> H[Inbound WhatsApp Reply]
+    H --> I[LLM Intent Extraction]
 
-    H --> I[LLM Intent and Entity Extraction<br/>Claude API structured JSON output]
+    I -->|Promise to Pay| J[Reschedule Job]
+    I -->|Churn Intent| K[Cancel Mandate]
+    I -->|Retry Now| L[Trigger Immediate Retry]
 
-    I -->|PROMISE_TO_PAY| J[Reschedule job<br/>via Celery/Redis]
-    I -->|CHURN_INTENT| K[Cancel Mandate<br/>Call merchant Cancel API]
-    I -->|RETRY_NOW| L[Trigger 1-Tap<br/>Razorpay Payment]
-
-    F --> M[(Settlement and Audit Ledger<br/>PostgreSQL)]
+    F --> M[Settlement and Audit Ledger]
     J --> M
     K --> M
     L --> M
 
-    M --> N[Recovery Rate / Cost-per-Recovery /<br/>Churn Shield Metrics Dashboard]
-
-    style B fill:#4A90D9,color:#fff
-    style C fill:#F5A623,color:#fff
-    style M fill:#7B68EE,color:#fff
-    style I fill:#50C878,color:#fff
+    M --> N[Recovery Dashboard]
 ```
-
 ## Repository Structure
 
 ```
