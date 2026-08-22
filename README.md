@@ -19,6 +19,7 @@ RazorRescue sits on top of Razorpay's payment.failed webhook to recover involunt
 ## Architecture
 
 ```mermaid
+%%{init: {'flowchart': {'curve': 'linear'}}}%%
 flowchart TD
     A[Payment Failed Webhook] --> B[Webhook Gateway]
     B --> C[Error Classifier]
