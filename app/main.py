@@ -134,8 +134,14 @@ class InboundMessage(BaseModel):
 async def whatsapp_inbound(msg: InboundMessage):
     result = extract_intent(msg.message_text)
     intent = result["intent"]
+    confidence = result.get("confidence", 0.0)
 
-    if intent == "PROMISE_TO_PAY":
+    CONFIDENCE_THRESHOLD = 0.6
+
+    if confidence < CONFIDENCE_THRESHOLD:
+        print(f"[CONFIDENCE_GATE] Low confidence ({confidence}) for payment_id={msg.payment_id} - routing to needs_review instead of auto-acting")
+        action_result = {"action": "needs_review", "payment_id": msg.payment_id, "reason": f"confidence {confidence} below threshold {CONFIDENCE_THRESHOLD}"}
+    elif intent == "PROMISE_TO_PAY":
         action_result = handle_promise_to_pay(msg.payment_id, result.get("promised_timeframe"))
     elif intent == "CHURN_INTENT":
         action_result = handle_churn_intent(msg.payment_id)
@@ -143,6 +149,7 @@ async def whatsapp_inbound(msg: InboundMessage):
         action_result = handle_retry_now(msg.payment_id)
     else:
         action_result = {"action": "no_action_unclear_intent", "payment_id": msg.payment_id}
+
 
     session = get_session()
     session.add(ConversationMessage(
