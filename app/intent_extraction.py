@@ -1,49 +1,64 @@
-import re
+import json
+import google.generativeai as genai
+from app.config import GEMINI_API_KEY
+
+genai.configure(api_key=GEMINI_API_KEY)
+
+EXTRACTION_SYSTEM_PROMPT = """You are an intent classifier for a payment recovery system in India.
+Customers reply to payment failure messages via WhatsApp, often in Hindi/English mix (Hinglish).
+
+Classify the customer's reply into exactly one intent:
+- PROMISE_TO_PAY: customer indicates they will pay later, and gives or implies a timeframe
+- CHURN_INTENT: customer wants to cancel, is unhappy, or says they no longer want the service
+- RETRY_NOW: customer wants to pay immediately or asks to retry now
+- UNCLEAR: intent cannot be confidently determined
+
+If PROMISE_TO_PAY, extract the promised date/timeframe as a short string (e.g. "Friday", "next week", "2026-08-28"). Otherwise set it to null.
+Also give a sentiment_score from -1.0 (very negative) to 1.0 (very positive), and a confidence score from 0.0 to 1.0 reflecting how certain you are of this classification.
+
+Respond ONLY with valid JSON, no other text, no markdown code fences, in this exact shape:
+{"intent": "...", "promised_timeframe": "..." or null, "sentiment_score": 0.0, "confidence": 0.0}
+"""
+
+model = genai.GenerativeModel(
+    model_name="gemini-2.5-flash",
+    system_instruction=EXTRACTION_SYSTEM_PROMPT,
+)
 
 
 def extract_intent(message_text: str) -> dict:
     """
-    MOCKED intent extraction — simulates what the Claude API would return,
-    using simple keyword rules. Swap this out for the real Anthropic API
-    call once billing/API key is set up (see intent_extraction_real.py).
+    Calls the Google Gemini API to classify a customer's WhatsApp reply
+    into an intent, with sentiment and confidence. Falls back to a safe
+    UNCLEAR/low-confidence result if the API call fails for any reason,
+    so a flaky external API never crashes the recovery pipeline.
     """
-    text = message_text.lower()
+    try:
+        response = model.generate_content(message_text)
+        raw_text = response.text.strip()
 
-    churn_keywords = ["cancel", "stop", "don't want", "not interested", "band karo", "nahi chahiye"]
-    promise_keywords = ["salary", "friday", "next week", "will pay", "pay karunga", "pay kar dunga", "later"]
-    retry_keywords = ["pay now", "retry", "abhi kar do", "try again", "charge now", "charging again", "try charging"]
+        # Gemini sometimes wraps JSON in markdown code fences - strip if present
+        if raw_text.startswith("```"):
+            raw_text = raw_text.strip("`")
+            if raw_text.startswith("json"):
+                raw_text = raw_text[4:].strip()
 
-    if any(k in text for k in churn_keywords):
-        intent = "CHURN_INTENT"
-        sentiment_score = -0.7
-        promised_timeframe = None
-        confidence = 0.85
-    elif any(k in text for k in promise_keywords):
-        intent = "PROMISE_TO_PAY"
-        sentiment_score = 0.1
-        confidence = 0.8
-        # very simple timeframe extraction
-        match = re.search(r"(friday|monday|tuesday|wednesday|thursday|saturday|sunday|next week|tomorrow)", text)
-        promised_timeframe = match.group(1).capitalize() if match else "unspecified"
-    elif any(k in text for k in retry_keywords):
-        intent = "RETRY_NOW"
-        sentiment_score = 0.3
-        promised_timeframe = None
-        confidence = 0.8
-    else:
-        intent = "UNCLEAR"
-        sentiment_score = 0.0
-        promised_timeframe = None
-        confidence = 0.3
+        result = json.loads(raw_text)
 
-    result = {
-        "intent": intent,
-        "promised_timeframe": promised_timeframe,
-        "sentiment_score": sentiment_score,
-        "confidence": confidence,
-    }
+        required_keys = {"intent", "promised_timeframe", "sentiment_score", "confidence"}
+        if not required_keys.issubset(result.keys()):
+            raise ValueError("Gemini response missing required keys")
 
-    print(f"[INTENT_EXTRACTION - MOCKED] Input: {message_text!r}")
-    print(f"[INTENT_EXTRACTION - MOCKED] Result: {result}")
+    except Exception as e:
+        print(f"[INTENT_EXTRACTION] AI call failed or malformed response: {e}")
+        result = {
+            "intent": "UNCLEAR",
+            "promised_timeframe": None,
+            "sentiment_score": 0.0,
+            "confidence": 0.0,
+        }
+
+    print(f"[INTENT_EXTRACTION - GEMINI] Input: {message_text!r}")
+    print(f"[INTENT_EXTRACTION - GEMINI] Result: {result}")
 
     return result
