@@ -50,8 +50,8 @@ class ConversationMessage(Base):
     message_text = Column(Text)
     extracted_intent = Column(String, nullable=True)
     sentiment_score = Column(Float, nullable=True)
+    confidence = Column(Float, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
-
 
 class RecoveryLedger(Base):
     __tablename__ = "recovery_ledger"

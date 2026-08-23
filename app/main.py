@@ -140,7 +140,11 @@ async def whatsapp_inbound(msg: InboundMessage):
 
     if confidence < CONFIDENCE_THRESHOLD:
         print(f"[CONFIDENCE_GATE] Low confidence ({confidence}) for payment_id={msg.payment_id} - routing to needs_review instead of auto-acting")
-        action_result = {"action": "needs_review", "payment_id": msg.payment_id, "reason": f"confidence {confidence} below threshold {CONFIDENCE_THRESHOLD}"}
+        action_result = {
+            "action": "needs_review",
+            "payment_id": msg.payment_id,
+            "reason": f"confidence {confidence} below threshold {CONFIDENCE_THRESHOLD}",
+        }
     elif intent == "PROMISE_TO_PAY":
         action_result = handle_promise_to_pay(msg.payment_id, result.get("promised_timeframe"))
     elif intent == "CHURN_INTENT":
@@ -150,7 +154,6 @@ async def whatsapp_inbound(msg: InboundMessage):
     else:
         action_result = {"action": "no_action_unclear_intent", "payment_id": msg.payment_id}
 
-
     session = get_session()
     session.add(ConversationMessage(
         payment_id=msg.payment_id,
@@ -158,6 +161,7 @@ async def whatsapp_inbound(msg: InboundMessage):
         message_text=msg.message_text,
         extracted_intent=intent,
         sentiment_score=result.get("sentiment_score"),
+        confidence=confidence,
     ))
     session.add(RecoveryLedger(
         payment_id=msg.payment_id,
